@@ -9,7 +9,7 @@ function App() {
       </div>
 
       <div>
-        <div className="flex flex-row w-[250px] justify-between mt-12 font-extrabold mx-auto">
+        <div className="flex flex-row w-full h-auto justify-between mt-12 font-extrabold mx-auto px-6">
           <button className="text-center rounded-2xl border-2 border-[#A6CD36] text-[#A6CD36] px-3 py-1">Euro to BGN</button>
           <button className="text-center rounded-2xl border-2 border-[#A6CD36] text-[#A6CD36] px-3 py-1">BGN to Euro</button>
         </div>
