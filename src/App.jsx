@@ -26,16 +26,17 @@ function App() {
 
   return (
     <div className="max-w-xs mx-auto text-center">
-      <div className="w-[250px] h-auto mx-auto my-4">
+
+      <div className="w-[250px] h-auto mx-auto my-8">
         <img src="/logo.png" alt="logo" className="w-full h-auto" />
       </div>
 
       {/* Mode Buttons */}
-      <div className="flex flex-row justify-between mt-6 font-extrabold mx-auto px-6">
+      <div className="flex flex-row justify-between mt-6 font-extrabold mx-auto px-2">
         <button
           className={`rounded-2xl border-2 px-3 py-1 ${mode === "bgnToEuro"
-            ? "bg-[#A6CD36] text-white border-[#A6CD36]"
-            : "text-[#A6CD36] border-[#A6CD36]"
+            ? "drop-shadow-[0_0_15px_#A6CD36] bg-black text-[#A6CD36] border-[#A6CD36]"
+            : "text-white border-white"
             }`}
           onClick={() => setMode("bgnToEuro")}
         >
@@ -44,8 +45,8 @@ function App() {
 
         <button
           className={`rounded-2xl border-2 px-3 py-1 ${mode === "euroToBgn"
-            ? "bg-[#A6CD36] text-white border-[#A6CD36]"
-            : "text-[#A6CD36] border-[#A6CD36]"
+            ? "drop-shadow-[0_0_15px_#A6CD36] bg-black text-[#A6CD36] border-[#A6CD36]"
+            : "text-white border-white"
             }`}
           onClick={() => setMode("euroToBgn")}
         >
@@ -53,28 +54,31 @@ function App() {
         </button>
       </div>
 
-      {/* Result */}
-      <div className="flex flex-row mt-4 w-full font-bold text-xl text-center">
-        <p className="text-white">Result:</p> {result !== "" && (<span className="text-[#A6CD36]">{result}</span>)}
-      </div>
-
       {/* Input */}
-      <div className="flex flex-row mt-4 gap-2 items-center">
+      <div className="flex flex-row mt-8 items-center justify-center">
         <input
           type="number"
           value={num}
           onChange={(e) => setNum(e.target.value)}
           placeholder="Enter amount"
-          className="border px-2 py-1 rounded w-full"
+          className="border px-3 h-10 rounded-tl rounded-bl w-[170px]
+               outline-none focus:outline-none focus:ring-0"
         />
 
         <button
-          className="text-white bg-red-500 px-3 py-1 rounded"
+          className="text-white bg-red-500 px-4 h-10 rounded-tr rounded-br"
           onClick={resetHandler}
         >
           Reset
         </button>
       </div>
+
+
+      {/* Result */}
+      <div className="flex flex-row mt-6 w-full font-bold text-xl text-center">
+        <p className="text-white mx-auto">Result: {result !== "" && (<span className="text-[#A6CD36]">{result} {mode === "euroToBgn" ? "BGN" : "EURO"}</span>)}</p>
+      </div>
+
 
     </div>
   );
