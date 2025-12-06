@@ -40,11 +40,11 @@ function App() {
       </div>
 
       {/* Mode Buttons */}
-      <div className="flex flex-row justify-between mt-6 font-extrabold mx-auto px-2">
+      <div className="flex flex-row justify-between mt-6  font-extrabold mx-auto px-2">
         <button
           className={`rounded-2xl border-2 px-3 py-1 ${mode === "bgnToEuro"
-              ? "drop-shadow-[0_0_15px_#A6CD36] bg-black text-[#A6CD36] border-[#A6CD36]"
-              : "text-white border-white"
+            ? "drop-shadow-[0_0_15px_#A6CD36] bg-black text-[#A6CD36] border-[#A6CD36]"
+            : "text-white border-white"
             }`}
           onClick={() => setMode("bgnToEuro")}
         >
@@ -53,8 +53,8 @@ function App() {
 
         <button
           className={`rounded-2xl border-2 px-3 py-1 ${mode === "euroToBgn"
-              ? "drop-shadow-[0_0_15px_#A6CD36] bg-black text-[#A6CD36] border-[#A6CD36]"
-              : "text-white border-white"
+            ? "drop-shadow-[0_0_15px_#A6CD36] bg-black text-[#A6CD36] border-[#A6CD36]"
+            : "text-white border-white"
             }`}
           onClick={() => setMode("euroToBgn")}
         >
@@ -63,7 +63,7 @@ function App() {
       </div>
 
       {/* 🔥 Fast Buttons */}
-      <div className="flex flex-wrap justify-center gap-4 mt-6">
+      <div className="flex flex-wrap justify-center gap-4 mt-10">
         {fastValues.map((v) => (
           <button
             key={v}
@@ -105,6 +105,46 @@ function App() {
           )}
         </p>
       </div>
+
+      {/* 🔢 Keypad */}
+      <div className="grid grid-cols-3 gap-3 mt-6 text-center mx-auto w-[200px]">
+
+        {/* Numbers */}
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => (
+          <button
+            key={n}
+            onClick={() => setNum((prev) => prev + String(n))}
+            className="bg-[#A6CD36] text-black font-bold py-3 rounded-lg"
+          >
+            {n}
+          </button>
+        ))}
+
+        {/* Dot */}
+        <button
+          onClick={() => setNum((prev) => (prev.includes(".") ? prev : prev + "."))}
+          className="bg-[#A6CD36] text-black font-bold py-3 rounded-lg"
+        >
+          .
+        </button>
+
+        {/* 0 */}
+        <button
+          onClick={() => setNum((prev) => prev + "0")}
+          className="bg-[#A6CD36] text-black font-bold py-3 rounded-lg"
+        >
+          0
+        </button>
+
+        {/* Backspace */}
+        <button
+          onClick={() => setNum((prev) => prev.slice(0, -1))}
+          className="bg-red-500 text-white font-bold py-3 rounded-lg"
+        >
+          ⌫
+        </button>
+      </div>
+
 
     </div>
   );
