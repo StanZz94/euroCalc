@@ -14,7 +14,7 @@ function App() {
     return "";
   }
 
-  // 🔥 Live convert when input or mode changes
+  // 🔥 Live convert on input change or mode change
   useEffect(() => {
     setResult(convert(num, mode));
   }, [num, mode]);
@@ -22,6 +22,14 @@ function App() {
   function resetHandler() {
     setNum("");
     setResult("");
+  }
+
+  // 🔥 Fast add buttons
+  const fastValues = [1, 2, 5, 10, 20, 30, 40, 50, 100];
+
+  function handleFastAdd(value) {
+    const current = parseFloat(num) || 0;
+    setNum(String(current + value));
   }
 
   return (
@@ -35,8 +43,8 @@ function App() {
       <div className="flex flex-row justify-between mt-6 font-extrabold mx-auto px-2">
         <button
           className={`rounded-2xl border-2 px-3 py-1 ${mode === "bgnToEuro"
-            ? "drop-shadow-[0_0_15px_#A6CD36] bg-black text-[#A6CD36] border-[#A6CD36]"
-            : "text-white border-white"
+              ? "drop-shadow-[0_0_15px_#A6CD36] bg-black text-[#A6CD36] border-[#A6CD36]"
+              : "text-white border-white"
             }`}
           onClick={() => setMode("bgnToEuro")}
         >
@@ -45,8 +53,8 @@ function App() {
 
         <button
           className={`rounded-2xl border-2 px-3 py-1 ${mode === "euroToBgn"
-            ? "drop-shadow-[0_0_15px_#A6CD36] bg-black text-[#A6CD36] border-[#A6CD36]"
-            : "text-white border-white"
+              ? "drop-shadow-[0_0_15px_#A6CD36] bg-black text-[#A6CD36] border-[#A6CD36]"
+              : "text-white border-white"
             }`}
           onClick={() => setMode("euroToBgn")}
         >
@@ -54,8 +62,21 @@ function App() {
         </button>
       </div>
 
-      {/* Input */}
-      <div className="flex flex-row mt-8 items-center justify-center">
+      {/* 🔥 Fast Buttons */}
+      <div className="flex flex-wrap justify-center gap-4 mt-6">
+        {fastValues.map((v) => (
+          <button
+            key={v}
+            onClick={() => handleFastAdd(v)}
+            className="px-3 py-1 rounded-lg bg-[#A6CD36] text-black font-bold"
+          >
+            +{v}
+          </button>
+        ))}
+      </div>
+
+      {/* Input + Reset */}
+      <div className="flex flex-row mt-6 items-center justify-center">
         <input
           type="number"
           value={num}
@@ -73,12 +94,17 @@ function App() {
         </button>
       </div>
 
-
       {/* Result */}
       <div className="flex flex-row mt-6 w-full font-bold text-xl text-center">
-        <p className="text-white mx-auto">Result: {result !== "" && (<span className="text-[#A6CD36]">{result} {mode === "euroToBgn" ? "BGN" : "EURO"}</span>)}</p>
+        <p className="text-white mx-auto">
+          Result:{" "}
+          {result !== "" && (
+            <span className="text-[#A6CD36]">
+              {result} {mode === "euroToBgn" ? "BGN" : "EURO"}
+            </span>
+          )}
+        </p>
       </div>
-
 
     </div>
   );
