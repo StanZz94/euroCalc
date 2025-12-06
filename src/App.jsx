@@ -33,9 +33,9 @@ function App() {
   }
 
   return (
-    <div className="max-w-xs mx-auto text-center">
+    <div className="max-w-xs mx-auto text-center max-h-screen">
 
-      <div className="w-[250px] h-auto mx-auto my-8">
+      <div className="w-[250px] h-auto mx-auto mt-3 mb-8">
         <img src="/logo.png" alt="logo" className="w-full h-auto" />
       </div>
 
@@ -78,12 +78,13 @@ function App() {
       {/* Input + Reset */}
       <div className="flex flex-row mt-6 items-center justify-center">
         <input
-          type="number"
+          type="text"
           value={num}
           onChange={(e) => setNum(e.target.value)}
           placeholder="Enter amount"
           className="border px-3 h-10 rounded-tl rounded-bl w-[170px]
-               outline-none focus:outline-none focus:ring-0"
+         outline-none focus:outline-none focus:ring-0"
+          inputMode="decimal"   // mobile numeric keyboard
         />
 
         <button
