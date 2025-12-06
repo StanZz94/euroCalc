@@ -84,7 +84,7 @@ function App() {
           placeholder="Enter amount"
           className="border px-3 h-10 rounded-tl rounded-bl w-[170px]
          outline-none focus:outline-none focus:ring-0"
-          inputMode="decimal"   // mobile numeric keyboard
+          inputMode="none"   // mobile numeric keyboard
         />
 
         <button
