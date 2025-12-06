@@ -78,6 +78,7 @@ function App() {
       {/* Input + Reset */}
       <div className="flex flex-row mt-6 items-center justify-center">
         <input
+          readOnly
           type="text"
           value={num}
           onChange={(e) => setNum(e.target.value)}
